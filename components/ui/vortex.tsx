@@ -226,16 +226,30 @@ export const Vortex = (props: VortexProps) => {
     ctx.restore();
   };
 
+  const [isMobile, setIsMobile] = React.useState<boolean>(false);
+
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
     setup();
     window.addEventListener("resize", () => {
+      checkMobile();
       const canvas = canvasRef.current;
       const ctx = canvas?.getContext("2d");
       if (canvas && ctx) {
         resize(canvas, ctx);
       }
     });
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  if (isMobile) {
+    return (
+      <div className={cn("absolute inset-0 bg-[#030303]", props.containerClassName)}>
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-indigo-500/5 to-transparent" />
+      </div>
+    );
+  }
 
   return (
     <div className={cn("relative h-full w-full", props.containerClassName)}>

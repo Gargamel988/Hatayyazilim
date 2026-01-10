@@ -67,7 +67,7 @@ export default function ServicesCTASection() {
                             size="lg"
                             className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white px-8 py-7 text-lg rounded-xl shadow-lg shadow-indigo-500/25 group"
                         >
-                            <Link href="/iletisim">
+                            <Link href="/contact">
                                 Ücretsiz Görüşme Talep Et
                                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                             </Link>

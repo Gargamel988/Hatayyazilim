@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export default function ContactInfo() {
     return (
-        <div className="space-y-12">
+        <div className="space-y-12 ">
             {/* Contact Details */}
             <div className="grid gap-6">
                 <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:bg-white/[0.04] transition-colors">
@@ -13,8 +13,8 @@ export default function ContactInfo() {
                         İletişim Kanalı
                     </h3>
                     <div className="space-y-4">
-                        <a href="mailto:info@hatayyazilim.com" className="block text-white/80 hover:text-white transition-colors">
-                            info@hatayyazilim.com
+                        <a href="mailto:omeraydin1.web@gmail.com" className="block text-white/80 hover:text-white transition-colors">
+                            omeraydin1.web@gmail.com
                         </a>
                         <p className="text-sm text-white/40">
                             Kısa bir mail atarak da süreci başlatabilirsiniz.

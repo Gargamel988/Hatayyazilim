@@ -1,22 +1,20 @@
-"use client";
-import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { FadeUp } from "@/components/ui/motion-wrapper";
 
 const navigation = [
   { name: "Ana Sayfa", href: "/" },
-  { name: "Hakkımızda", href: "/hakkimizda" },
-  { name: "Hizmetler", href: "/hizmetler" },
-  { name: "Projeler", href: "/projeler" },
+  { name: "Hakkımızda", href: "/about" },
+  { name: "Hizmetler", href: "/services" },
+  { name: "Projeler", href: "/projects" },
   { name: "Blog", href: "/blog" },
-  { name: "İletişim", href: "/iletisim" },
+  { name: "İletişim", href: "/contact" },
 ];
 
 const services = [
-  { name: "Web Geliştirme", href: "/hizmetler/web-gelistirme" },
-  { name: "Mobil Uygulama", href: "/hizmetler/mobil-uygulama" },
-  { name: "SEO Optimizasyon", href: "/hizmetler/seo" },
-  { name: "E-Ticaret Çözümleri", href: "/hizmetler/e-ticaret" },
+  { name: "Web Geliştirme", href: "/services/web-yazilim" },
+  { name: "Mobil Uygulama", href: "/services/mobil-uygulama" },
+  { name: "SEO Optimizasyon", href: "/services/seo-danismanlik" },
 ];
 
 const legalLinks = [
@@ -25,27 +23,11 @@ const legalLinks = [
 ];
 
 export default function SeoFooterSection() {
-  const fadeUpVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.4, 0.25, 1],
-      },
-    },
-  };
-
   return (
     <footer className="relative bg-[#030303] border-t border-white/[0.05]">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 md:px-6 py-16 md:py-20">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUpVariants}
+        <FadeUp
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12"
         >
           {/* 1️⃣ MARKA TANIMI */}
@@ -53,7 +35,7 @@ export default function SeoFooterSection() {
             <h3 className="text-xl font-bold text-white mb-4">
               Hatay Yazılım
             </h3>
-            <p className="text-white/50 text-sm leading-relaxed mb-6">
+            <p className="text-white/70 text-sm leading-relaxed mb-6">
               Hatay merkezli kurumsal yazılım ajansı. Web ve mobil uygulama
               geliştirme, SEO optimizasyonu ile işletmelerin dijital
               dönüşümüne rehberlik ediyoruz.
@@ -75,7 +57,7 @@ export default function SeoFooterSection() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-white/50 hover:text-white transition-colors duration-200 text-sm"
+                    className="text-white/60 hover:text-white transition-colors duration-200 text-sm"
                   >
                     {item.name}
                   </Link>
@@ -94,7 +76,7 @@ export default function SeoFooterSection() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-white/50 hover:text-white transition-colors duration-200 text-sm"
+                    className="text-white/60 hover:text-white transition-colors duration-200 text-sm"
                   >
                     {item.name}
                   </Link>
@@ -111,35 +93,35 @@ export default function SeoFooterSection() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                <span className="text-white/50 text-sm">Hatay, Türkiye</span>
+                <span className="text-white/60 text-sm">Hatay, Türkiye</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                <a
-                  href="mailto:info@hatayyazilim.com"
-                  className="text-white/50 hover:text-white transition-colors duration-200 text-sm"
+                <Link
+                  href="mailto:omeraydin1.web@gmail.com"
+                  className="text-white/60 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  info@hatayyazilim.com
-                </a>
+                  omeraydin1.web@gmail.com
+                </Link>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                <a
-                  href="tel:+905551234567"
-                  className="text-white/50 hover:text-white transition-colors duration-200 text-sm"
+                <Link
+                  href="tel:+905537319288"
+                  className="text-white/60 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  +90 555 123 45 67
-                </a>
+                  +90 553 731 92 88
+                </Link>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                <span className="text-white/50 text-sm">
+                <span className="text-white/60 text-sm">
                   Pzt - Cuma: 09:00 - 18:00
                 </span>
               </li>
             </ul>
           </div>
-        </motion.div>
+        </FadeUp>
       </div>
 
       {/* Bottom Bar */}
@@ -152,7 +134,7 @@ export default function SeoFooterSection() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-white/30 hover:text-white/60 transition-colors duration-200 text-xs"
+                  className="text-white/50 hover:text-white/80 transition-colors duration-200 text-xs"
                 >
                   {item.name}
                 </Link>
@@ -161,10 +143,10 @@ export default function SeoFooterSection() {
 
             {/* 6️⃣ COPYRIGHT */}
             <div className="text-center md:text-right">
-              <p className="text-white/30 text-xs">
+              <p className="text-white/50 text-xs">
                 © {new Date().getFullYear()} Hatay Yazılım. Tüm hakları saklıdır.
               </p>
-              <p className="text-white/20 text-xs mt-1">
+              <p className="text-white/40 text-xs mt-1">
                 Geleceğe yolculukta güvenilir rotanız.
               </p>
             </div>

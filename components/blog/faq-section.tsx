@@ -6,6 +6,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
+import Script from "next/script";
 
 const faqs = [
     {
@@ -31,8 +32,26 @@ const faqs = [
 ];
 
 export default function FaqSection() {
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer,
+            },
+        })),
+    };
+
     return (
         <section className="py-24 bg-[#030303]">
+            <Script
+                id="faq-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
             <div className="container mx-auto px-4 md:px-6">
                 <div className="max-w-3xl mx-auto">
                     <div className="text-center mb-16">
@@ -49,9 +68,9 @@ export default function FaqSection() {
                             <AccordionItem
                                 key={index}
                                 value={`item-${index}`}
-                                className="bg-white/[0.02] border border-white/10 rounded-xl px-4 md:px-6 overflow-hidden transition-colors hover:bg-white/[0.04] group"
+                                className="border-b border-white/5 px-2 bg-white/2 hover:bg-white/4 transition-colors rounded-xl overflow-hidden mb-4"
                             >
-                                <AccordionTrigger className="text-white hover:text-indigo-400 hover:no-underline text-left py-6 text-lg font-medium [&[data-state=open]]:text-indigo-400">
+                                <AccordionTrigger className="text-left text-white/80 hover:text-white hover:no-underline py-6 data-[state=open]:text-indigo-400 transition-colors">
                                     {faq.question}
                                 </AccordionTrigger>
                                 <AccordionContent className="text-white/60 text-base leading-relaxed pb-6">

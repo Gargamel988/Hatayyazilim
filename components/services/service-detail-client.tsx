@@ -347,7 +347,7 @@ export default function HizmetDetayClient({ slug }: { slug: string }) {
                                 size="lg"
                                 className={`bg-gradient-to-r ${colors.gradient} text-white px-8 py-7 text-lg rounded-xl shadow-lg group`}
                             >
-                                <Link href="/iletisim">
+                                <Link href="/contact">
                                     Ücretsiz Görüşme Talep Et
                                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                                 </Link>

@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Globe, Smartphone, Monitor } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -18,22 +17,22 @@ const categories = [
 const projects = [
     {
         id: 1,
-        slug: "hatay-lojistik",
-        title: "Global Lojistik Yönetimi",
-        description: "Uluslararası taşımacılık operasyonlarını tek merkezden yöneten bulut tabanlı sistem.",
+        slug: "chefoodai",
+        title: "ChefoodAI",
+        description: "Yemek tariflerini yapay zeka ile analiz edip, en iyi yemek tariflerini bulan web uygulaması.",
         category: "web",
-        tags: ["Web Yazılım", "Özel Sistem"],
-        client: "Hatay Lojistik A.Ş.",
-        image: "from-blue-500/20 to-cyan-500/20", // Placeholder gradient
+        tags: ["Web Yazılım", "Yemek Tarifi Analizi"],
+        client: "ChefoodAI",
+        image: "from-blue-500/20 to-cyan-500/20",
     },
     {
         id: 2,
-        slug: "lezzet-sepeti",
-        title: "Lezzet Sepeti Mobil App",
-        description: "Yerel restoranlar için geliştirilen, anlık sipariş ve kurye takip uygulaması.",
+        slug: "beatnova",
+        title: "BeatNova",
+        description: "Yapay zeka destekli, reklamsız ve detaylı istatistikler sunan yeni nesil müzik platformu.",
         category: "mobile",
         tags: ["Mobil Uygulama", "iOS & Android"],
-        client: "Lezzet Sepeti",
+        client: "BeatNova",
         image: "from-orange-500/20 to-red-500/20",
     },
     {
@@ -58,23 +57,24 @@ const projects = [
     },
     {
         id: 5,
-        slug: "otel-rezervasyon",
-        title: "Otel Rezervasyon Sistemi",
-        description: "Çok dilli, kanal yöneticisi entegreli doğrudan rezervasyon motoru.",
+        slug: "guzellik-salonu",
+        title: "Salon Heaven",
+        description: "Modern randevu sistemi ve dijital vitrin özellikleriyle salon yönetimini dijitalleştiren web platformu.",
         category: "web",
-        tags: ["Web Yazılım", "Rezervasyon"],
-        client: "Grand Hotel",
+        tags: ["Web Yazılım", "Randevu Sistemi"],
+        client: "Salon Heaven",
         image: "from-teal-500/20 to-cyan-500/20",
     },
     {
         id: 6,
-        slug: "fitness-app",
-        title: "Fitness & Sağlık App",
-        description: "Kişiselleştirilmiş antrenman programları sunan üyelik bazlı mobil uygulama.",
+        slug: "finans-app",
+        title: "MoneyMapAi",
+        description: "Gelir ve giderlerinizi yapay zeka yardımıyla rahatlıkla kontrol etmeniz için mobil uygulama.",
         category: "mobile",
         tags: ["Mobil Uygulama", "SaaS"],
         client: "Active Life",
         image: "from-rose-500/20 to-pink-500/20",
+
     },
 ];
 

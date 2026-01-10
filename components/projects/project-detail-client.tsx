@@ -1,73 +1,72 @@
 "use client";
 import { motion, Variants } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, ArrowLeft, Check, Layers, Zap, TrendingUp } from "lucide-react";
+import { ArrowLeft, Check, Layers, Zap, TrendingUp } from "lucide-react";
 import { notFound } from "next/navigation";
 import { ServicesCTASection } from "@/components/services";
 
 // Proje Verileri
 const projectData = {
-    "hatay-lojistik": {
-        title: "Global Lojistik Yönetimi",
-        client: "Hatay Lojistik A.Ş.",
-        category: "Web Yazılım & Otomasyon",
-        summary: "Uluslararası taşımacılık operasyonlarını tek merkezden yöneten, anlık araç takibi ve yük plânlaması sunan bulut tabanlı yönetim sistemi.",
+    "chefoodai": {
+        title: "ChefoodAI",
+        client: "ChefoodAI",
+        category: "Web Uygulaması",
+        summary: "Elinizdeki malzemeleri yapay zeka ile analiz edip, size en uygun lezzetli tarifleri sunan akıllı mutfak asistanı.",
         problem: {
-            title: "Karmaşık ve Dağınık Operasyonlar",
-            description: "Operasyonlar Excel dosyaları ve telefon trafiğiyle yönetiliyordu. Araçların konumu anlık takip edilemiyor, müşterilere geç bilgi veriliyordu. Veri kaybı ve operasyonel hatalar maliyetleri artırıyordu.",
+            title: "Ne Pişirsem Derdi ve Gıda İsrafı",
+            description: "Evdeki malzemelerle ne yapılacağını bilememe stresi ve kullanılmayan gıdaların bozulup çöpe gitmesi. Standart tarif sitelerinde sadece isme göre arama yapılabilmesi kısıtlayıcıydı.",
         },
         solution: {
-            title: "Merkezi Dijital Yönetim Sistemi",
-            description: "Tüm süreci uçtan uca dijitalleştiren özel bir ERP sistemi geliştirdik. Araç takip cihazlarıyla entegre çalışan, müşteri portalı olan ve otomatik faturalama yapabilen modüler bir yapı kurduk.",
+            title: "Yapay Zeka Şefiniz Mutfakta",
+            description: "Gelişmiş görüntü işleme ve doğal dil işleme modelleriyle, ister buzdolabının fotoğrafını çekin ister malzemeleri yazın, size özel reçeteler üreten bir platform geliştirdik.",
             features: [
-                "Canlı Araç Takibi (GPS Entegrasyonu)",
-                "Müşteri Bilgilendirme Portalı",
-                "Otomatik Teklif ve Faturalama",
-                "Sürücü Mobil Uygulaması",
+                "Görsel Malzeme Tanıma (Vision AI)",
+                "Kişiselleştirilmiş Tarif Motoru",
+                "Besin Değeri Hesaplama",
+                "Akıllı Alışveriş Listesi",
             ],
         },
         result: {
-            title: "Hız ve Verimlilik Artışı",
+            title: "Daha Az İsraf, Daha Çok Lezzet",
             metrics: [
-                { label: "Operasyon Hızı", value: "%40 Artış" },
-                { label: "Hata Oranı", value: "%95 Düşüş" },
-                { label: "Müşteri Memnuniyeti", value: "4.8/5" },
+                { label: "Atık Azaltımı", value: "%40" },
+                { label: "Aktif Kullanıcı", value: "25K+" },
+                { label: "Tarif Üretimi", value: "1M+" },
             ],
-            description: "Sistemin devreye girmesiyle operasyonel iş yükü yarı yarıya azaldı. Müşteriler yüklerini cep telefonundan takip edebilir hale geldi, bu da çağrı merkezi yükünü %70 azalttı.",
+            description: "Kullanıcılar eldeki malzemeleri değerlendirerek mutfak bütçesinden tasarruf sağladı ve yemek planlama sürelerini minimuma indirdi.",
         },
-        techStack: ["Next.js", "Node.js", "PostgreSQL", "Docker", "AWS"],
+        techStack: ["Next.js", "Vercel AI SDK", "TailwindCSS", "Supabase", "TypeScript"],
         color: "indigo",
     },
-    "lezzet-sepeti": {
-        title: "Lezzet Sepeti Mobil App",
-        client: "Lezzet Sepeti",
-        category: "Mobil Uygulama",
-        summary: "Yerel restoranların siparişlerini yönetebildiği, kurye takibi yapılabilen ve son kullanıcıya hızlı sipariş deneyimi sunan mobil ekosistem.",
+    "beatnova": {
+        title: "BeatNova",
+        client: "BeatNova",
+        category: "Mobil Müzik Uygulaması",
+        summary: "Yapay zeka destekli müzik önerileri sunan, reklamsız ve detaylı dinleme istatistiklerine sahip yeni nesil müzik platformu.",
         problem: {
-            title: "Pazaryeri Komisyonları ve Sadakat Sorunu",
-            description: "Restoranlar yüksek komisyon oranlarından şikayetçiydi. Kendi müşterilerine doğrudan ulaşamıyor ve sadakat oluşturamıyorlardı. Sipariş takibi manuel yapıldığı için teslimatlar gecikiyordu.",
+            title: "Reklam Kirliliği ve Yetersiz Öneriler",
+            description: "Mevcut ücretsiz müzik uygulamalarında kullanıcı deneyimini bozan sık reklam gösterimleri ve kullanıcının zevkine tam uymayan standart algoritma önerileri.",
         },
         solution: {
-            title: "Kurye ve Sipariş Takip Ekosistemi",
-            description: "Restoran, Kurye ve Müşteri olmak üzere 3 farklı uygulama içeren bir ekosistem kurduk. Akıllı rota optimizasyonu ile kurye verimliliğini artırdık.",
+            title: "Kesintisiz ve Akıllı Müzik Deneyimi",
+            description: "Tamamen reklamsız bir altyapı ile kesintisiz müzik keyfi sunarken, yapay zeka algoritmalarımız kullanıcının dinleme alışkanlıklarını analiz ederek nokta atışı önerilerde bulunuyor.",
             features: [
-                "Canlı Sipariş Takibi",
-                "Akıllı Rota Optimizasyonu",
-                "Sadakat Puan Sistemi",
-                "Push Bildirim Yönetimi",
+                "AI Destekli Öneri Sistemi",
+                "Detaylı Dinleme İstatistikleri",
+                "Reklamsız Akış",
+                "Kişiselleştirilmiş Playlistler",
             ],
         },
         result: {
-            title: "Daha Düşük Maliyet, Daha Hızlı Teslimat",
+            title: "Yüksek Kullanıcı Bağlılığı",
             metrics: [
-                { label: "Sipariş Hızı", value: "25dk Ort." },
-                { label: "Restoran Kârı", value: "%15 Artış" },
-                { label: "Kullanıcı Sayısı", value: "50K+" },
+                { label: "Aktif Süre", value: "45dk/gün" },
+                { label: "Kullanıcı", value: "100K+" },
+                { label: "Memnuniyet", value: "4.9/5" },
             ],
-            description: "Restoranlar komisyonsuz satış kanalı kazandı. Kurye rota optimizasyonu sayesinde aynı sürede %30 daha fazla paket teslimatı sağlandı.",
+            description: "Kullanıcılar reklamsız deneyim sayesinde uygulamada %40 daha fazla vakit geçiriyor. AI önerileri sayesinde keşif oranı 3 katına çıktı.",
         },
-        techStack: ["React Native", "Firebase", "Google Maps API", "NestJS"],
+        techStack: ["React Native", "Node.js", "Vercel AI SDK", "Supabase"],
         color: "violet",
     },
     "yapi-market": {
@@ -132,66 +131,65 @@ const projectData = {
         techStack: ["React", ".NET Core", "SQL Server", "Azure"],
         color: "indigo",
     },
-    "otel-rezervasyon": {
-        title: "Otel Rezervasyon Sistemi",
-        client: "Grand Hotel",
-        category: "Web Yazılım",
-        summary: "Çok dilli, kanal yöneticisi entegreli ve komisyonsuz doğrudan rezervasyon motoru.",
+    "guzellik-salonu": {
+        title: "Salon Heaven",
+        client: "Salon Heaven",
+        category: "Web Yazılım & Randevu",
+        summary: "Modern tasarım estetiğiyle salonun marka değerini yükselten, 7/24 online randevu ve personel yönetim sistemi.",
         problem: {
-            title: "Yüksek Komisyon Giderleri",
-            description: "Otel, rezervasyonlarının %90'ını Booking/Expedia gibi kanallardan alıyor ve yüksek komisyon ödüyordu. Kendi siteleri üzerinden satış yapamıyorlardı.",
+            title: "Randevu Karmaşası",
+            description: "Ajanda ve telefon üzerinden yürütülen randevu süreçlerinde yaşanan çakışmalar, unutulan randevular ve mesai saatleri dışında müşterilerin ulaşamaması büyük bir sorun teşkil ediyordu.",
         },
         solution: {
-            title: "Doğrudan Rezervasyon Motoru",
-            description: "Kullanıcı dostu, mobil uyumlu ve güvenli ödeme altyapısına sahip bir rezervasyon motoru kurduk. Google Hotel Ads entegrasyonu sağladık.",
+            title: "Dijital Salon Yönetimi",
+            description: "Şık bir web arayüzü ile hizmetleri vitrinleyen, müşterilerin istedikleri personel ve saate saniyeler içinde randevu alabildiği entegre bir sistem geliştirdik.",
             features: [
-                "Channel Manager Entegrasyonu",
-                "Çoklu Dil ve Para Birimi",
-                "Sanal POS Entegrasyonu",
-                "Dinamik Fiyatlama",
+                "Online Randevu Modülü",
+                "Personel ve Hizmet Yönetimi",
+                "Dinamik Galeri Yönetimi",
             ],
         },
         result: {
-            title: "Artan Kârlılık",
+            title: "Profesyonel Hizmet Deneyimi",
             metrics: [
-                { label: "Doğrudan Rez.", value: "%300 Artış" },
-                { label: "Komisyon Tasarrufu", value: "%20" },
-                { label: "Doluluk Oranı", value: "%95" },
+                { label: "Doluluk", value: "%95" },
+                { label: "Tel Trafiği", value: "%80 Azalış" },
+                { label: "Yeni Müşteri", value: "+200/ay" },
             ],
-            description: "Otelin kendi sitesinden aldığı rezervasyonlar 3 katına çıktı. Komisyon giderleri ciddi oranda azaldı.",
+            description: "Telefon trafiği neredeyse bitti. Müşteriler randevularını kendileri yönetmeye başladı, bu da personelin işine odaklanmasını sağladı.",
         },
-        techStack: ["Next.js", "Node.js", "MongoDB", "Redis"],
+        techStack: ["Next.js", "Prisma", "Supabase", "Shadcn/ui", "TailwindCSS", "TypeScript"],
         color: "violet",
     },
-    "fitness-app": {
-        title: "Fitness & Sağlık App",
-        client: "Active Life",
+    "finans-app": {
+        title: "MoneyMapAi",
+        client: "FinTech Solutions",
         category: "Mobil Uygulama",
-        summary: "Kişiselleştirilmiş antrenman programları sunan, video içerikli üyelik bazlı mobil uygulama.",
+        summary: "Gelir ve giderlerinizi yapay zeka yardımıyla detaylı analiz eden ve kolayca takip etmenizi sağlayan akıllı finans asistanı.",
         problem: {
-            title: "Sınırlı Eğitmen Kapasitesi",
-            description: "Spor salonundaki eğitmenler aynı anda sınırlı sayıda üyeyle ilgilenebiliyor, uzaktan eğitim taleplerine yanıt veremiyorlardı.",
+            title: "Karmaşık Bütçe Takibi",
+            description: "Manuel gelir-gider takibi yapmak zor ve zaman alıcı. Harcamaların nereye gittiğini analiz etmek ve tasarruf stratejileri oluşturmak disiplin gerektiriyor.",
         },
         solution: {
-            title: "Cepteki Kişisel Antrenör",
-            description: "Yapay zeka destekli program hazırlama, video kütüphanesi ve gelişim takip özellikleri olan bir mobil uygulama geliştirdik.",
+            title: "Yapay Zeka Destekli Cüzdan",
+            description: "Fiş tarama ve harcama alışkanlıklarını analiz eden yapay zeka modülleriyle finansal yönetimi otomize ettik.",
             features: [
-                "Video Antrenman Kütüphanesi",
-                "AI Program Oluşturucu",
-                "Beslenme Takibi",
-                "Topluluk Özellikleri",
+                "AI Fiş & Fatura Tarama",
+                "Akıllı Bütçe Önerileri",
+                "Otomatik Kategorizasyon",
+                "Gelir-Gider Analizi",
             ],
         },
         result: {
-            title: "Sınırsız Ölçeklenme",
+            title: "Finansal Özgürlük",
             metrics: [
-                { label: "Aktif Üye", value: "10K+" },
-                { label: "Üye Sadakati", value: "%85" },
-                { label: "Global Erişim", value: "15 Ülke" },
+                { label: "İndirme", value: "5K+" },
+                { label: "Tasarruf", value: "%35 Artış" },
+                { label: "Memnuniyet", value: "4.9/5" },
             ],
-            description: "Spor salonu fiziksel sınırlarını aştı. Dünyanın her yerinden üyeye hizmet verir hale geldi.",
+            description: "Kullanıcılar gereksiz harcamalarını %35 oranında azalttı. Uygulama, finansal hedeflere ulaşmada kişisel bir danışman gibi çalışıyor.",
         },
-        techStack: ["Flutter", "Firebase", "Stripe API"],
+        techStack: ["React Native", "Subabase", "Vercel Ai SDK", "Expo"],
         color: "emerald",
     }
 };

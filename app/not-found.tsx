@@ -3,32 +3,55 @@ import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Home, ArrowLeft, Rocket } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const fadeUpVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.8,
+            delay: i * 0.15,
+            ease: [0.25, 0.4, 0.25, 1],
+        },
+    }),
+};
+
+const floatVariants: Variants = {
+    animate: {
+        y: [-10, 10, -10],
+        rotate: [-5, 5, -5],
+        transition: {
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+        },
+    },
+};
 
 export default function NotFound() {
-    const fadeUpVariants: Variants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: (i: number) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.8,
-                delay: i * 0.15,
-                ease: [0.25, 0.4, 0.25, 1],
-            },
-        }),
-    };
+    const router = useRouter();
+    const [mounted, setMounted] = useState(false);
 
-    const floatVariants: Variants = {
-        animate: {
-            y: [-10, 10, -10],
-            rotate: [-5, 5, -5],
-            transition: {
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-            },
-        },
-    };
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    // Generate stars only once to avoid hydration mismatch
+    // We use a fixed seed or just render them after mount
+    // To solve hydration mismatch with random values, we only render random stars after mount
+    const [stars, setStars] = useState<{ id: number; top: string; left: string; delay: string }[]>([]);
+
+    useEffect(() => {
+        setStars(Array.from({ length: 30 }).map((_, i) => ({
+            id: i,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            delay: `${Math.random() * 3}s`,
+        })));
+    }, []);
 
     return (
         <main className="fixed inset-0 z-[100] w-full flex items-center justify-center overflow-hidden bg-[#030303]">
@@ -38,22 +61,22 @@ export default function NotFound() {
             </div>
 
             {/* Decorative stars */}
-            <div className="absolute inset-0 overflow-hidden">
-                {[...Array(30)].map((_, i) => (
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {stars.map((star) => (
                     <div
-                        key={i}
+                        key={star.id}
                         className="absolute w-1 h-1 bg-white/20 rounded-full"
                         style={{
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 3}s`,
+                            top: star.top,
+                            left: star.left,
+                            animationDelay: star.delay,
                         }}
                     />
                 ))}
             </div>
 
             {/* Orbit lines */}
-            <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-10">
+            <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-10 pointer-events-none">
                 <div className="w-[500px] h-[500px] border border-white/20 rounded-full" />
                 <div className="absolute w-[400px] h-[400px] border border-white/20 rounded-full" />
                 <div className="absolute w-[300px] h-[300px] border border-white/20 rounded-full" />
@@ -116,16 +139,13 @@ export default function NotFound() {
                             </Link>
                         </Button>
                         <Button
-                            asChild
                             size="lg"
                             variant="outline"
                             className="border-white/20 text-white hover:bg-white/5 px-8 py-6 text-lg rounded-xl group"
-                            onClick={() => window.history.back()}
+                            onClick={() => router.back()}
                         >
-                            <Link href="#" onClick={(e) => { e.preventDefault(); window.history.back(); }}>
-                                <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-                                Geri Git
-                            </Link>
+                            <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+                            Geri Git
                         </Button>
                     </motion.div>
 

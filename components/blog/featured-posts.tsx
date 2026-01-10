@@ -1,79 +1,27 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, Calendar, Tag } from "lucide-react";
-
+import { Clock, Calendar, Tag, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-
-// Mock Data
-const posts = [
-    {
-        id: 1,
-        slug: "kurumsal-web-sitesi-dikkat-edilmesi-gerekenler",
-        title: "Kurumsal Web Sitesi Yaptırırken Nelere Dikkat Edilmeli?",
-        summary: "Web siteniz dijital kartvizitinizden fazlasıdır. Doğru teknoloji, SEO altyapısı ve kullanıcı deneyimi (UX) markanızı nasıl yukarı taşır? Hız, mobil uyumluluk ve güvenlik konuları bir opsiyon değil, zorunluluktur.",
-        category: "Web Yazılım",
-        categoryId: "web",
-        date: "12 Ocak 2024",
-        readTime: "6 dk",
-        image: "from-blue-500/20 to-cyan-500/20",
-        featured: true,
-    },
-    {
-        id: 2,
-        slug: "mobil-uygulama-vs-web-uygulama",
-        title: "Mobil Uygulama mı, Web Uygulama mı?",
-        summary: "Projeniz için hangisi doğru? Native mobil uygulamalar performans sunarken, Web uygulamaları (PWA) daha geniş erişim sağlar. Kullanıcı alışkanlıklarına göre seçim yapılmalıdır.",
-        category: "Rehberler",
-        categoryId: "guide",
-        date: "05 Ocak 2024",
-        readTime: "8 dk",
-        image: "from-orange-500/20 to-red-500/20",
-        featured: false,
-    },
-    {
-        id: 3,
-        slug: "olceklenebilir-yazilim-nedir",
-        title: "Ölçeklenebilir Yazılım Nedir? Neden Önemlidir?",
-        summary: "İşiniz büyüdüğünde yazılımınız tıkanıyor mu? Mikroservis mimarisi ve bulut teknolojileri ile milyonlarca kullanıcıya hizmet veren, geleceğe hazır sistemler kuruyoruz.",
-        category: "Kurumsal",
-        categoryId: "case-study",
-        date: "28 Aralık 2023",
-        readTime: "5 dk",
-        image: "from-indigo-500/20 to-purple-500/20",
-        featured: false,
-    },
-    {
-        id: 4,
-        slug: "seo-neden-uzun-vadeli-yatirimdir",
-        title: "SEO Neden Kısa Vadeli Bir Çözüm Değildir?",
-        summary: "Google sıralamalarında kalıcı olmak anlık bir iş değil, bir süreçtir. Teknik SEO, kaliteli içerik ve düzenli optimizasyon ile organik trafiğinizi nasıl artıracağınızı anlatıyoruz.",
-        category: "SEO & Dijital Büyüme",
-        categoryId: "seo",
-        date: "15 Aralık 2023",
-        readTime: "7 dk",
-        image: "from-green-500/20 to-emerald-500/20",
-        featured: false,
-    },
-];
+import { BLOG_POSTS } from "@/lib/blog-data";
 
 export default function FeaturedPosts() {
     const searchParams = useSearchParams();
     const currentCategory = searchParams.get("category") || "all";
 
     // Filter posts
-    const filteredPosts = posts.filter(post =>
+    const filteredPosts = BLOG_POSTS.filter(post =>
         currentCategory === "all" ? true : post.categoryId === currentCategory
     );
 
     // Re-determine featured post based on filtered results
     // If we're filtering, just taking the first one as featured if the original featured post isn't in the list
     const featuredPost = currentCategory === "all"
-        ? posts.find((p) => p.featured)
+        ? BLOG_POSTS.find((p) => p.featured)
         : filteredPosts[0];
 
-    const otherPosts = currentCategory === "all"
-        ? posts.filter((p) => !p.featured)
-        : filteredPosts.filter(p => p.id !== featuredPost?.id);
+    // Ensure we don't show the featured post in the "other" list
+    const otherPosts = filteredPosts.filter(p => p.id !== featuredPost?.id);
 
     return (
         <section className="py-20 bg-[#030303]">
@@ -83,11 +31,11 @@ export default function FeaturedPosts() {
                 {featuredPost && (
                     <div className="mb-16">
                         <h2 className="text-sm font-bold text-white/40 uppercase tracking-widest mb-6">ÖNE ÇIKAN YAZI</h2>
-                        <div className="group block cursor-default">
+                        <Link href={`/blog/${featuredPost.slug}`} className="group block">
                             <div className="grid md:grid-cols-2 gap-8 items-center bg-white/[0.02] border border-white/[0.05] rounded-3xl p-6 md:p-8 hover:bg-white/[0.04] transition-colors duration-500">
                                 {/* Image Area */}
-                                <div className={`h-64 md:h-80 w-full rounded-2xl bg-gradient-to-br ${featuredPost.image} relative overflow-hidden`}>
-                                    <div className="absolute inset-0 bg-black/10 transition-colors duration-500" />
+                                <div className={`h-64 md:h-80 w-full rounded-2xl bg-gradient-to-br ${featuredPost.image} relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500`}>
+                                    <div className="absolute inset-0 bg-black/10" />
                                 </div>
 
                                 {/* Content */}
@@ -108,9 +56,13 @@ export default function FeaturedPosts() {
                                     <p className="text-white/60 text-lg leading-relaxed mb-4">
                                         {featuredPost.summary}
                                     </p>
+
+                                    <div className="flex items-center gap-2 text-indigo-400 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                                        Okumaya Devam Et <ArrowRight className="w-4 h-4" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 )}
 
@@ -142,20 +94,23 @@ export default function FeaturedPosts() {
                                     </span>
                                 </div>
 
-                                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 hover:text-indigo-400 transition-colors cursor-pointer leading-tight">
-                                    {post.title}
-                                </h3>
+                                <Link href={`/blog/${post.slug}`} className="group">
+                                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 hover:text-indigo-400 transition-colors cursor-pointer leading-tight">
+                                        {post.title}
+                                    </h3>
+                                </Link>
 
                                 <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-2xl">
                                     {post.summary}
                                 </p>
 
-                                <button className={`group flex items-center gap-2 text-indigo-400 font-medium hover:text-indigo-300 transition-colors ${index % 2 === 1 ? 'flex-row-reverse' : 'flex-row'
-                                    }`}>
+                                <Link href={`/blog/${post.slug}`}
+                                    className={`group flex items-center gap-2 text-indigo-400 font-medium hover:text-indigo-300 transition-colors ${index % 2 === 1 ? 'flex-row-reverse' : 'flex-row'
+                                        }`}>
                                     Devamını Oku
                                     <span className={`block transition-transform duration-300 ${index % 2 === 1 ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'
                                         }`}>→</span>
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     ))}

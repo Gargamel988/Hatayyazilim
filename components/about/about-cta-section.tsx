@@ -3,6 +3,7 @@ import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Briefcase, Mail } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function AboutCTASection() {
     const fadeUpVariants: Variants = {
@@ -17,6 +18,7 @@ export default function AboutCTASection() {
             },
         }),
     };
+    const router = useRouter();
 
     return (
         <section className="relative py-20 md:py-28 bg-[#030303] overflow-hidden">
@@ -61,26 +63,22 @@ export default function AboutCTASection() {
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
                         <Button
-                            asChild
                             size="lg"
                             className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white px-8 py-7 text-lg rounded-xl shadow-lg shadow-indigo-500/25 group"
+                            onClick={() => router.push("/contact")}
                         >
-                            <Link href="/iletisim">
-                                <Mail className="mr-2 h-5 w-5" />
-                                İletişime Geçin
-                                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                            </Link>
+                            <Mail className="mr-2 h-5 w-5" />
+                            İletişime Geçin
+                            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                         </Button>
                         <Button
-                            asChild
                             size="lg"
                             variant="outline"
                             className="border-white/20 text-white hover:bg-white/5 px-8 py-7 text-lg rounded-xl"
+                            onClick={() => router.push("/services")}
                         >
-                            <Link href="/hizmetler">
-                                <Briefcase className="mr-2 h-5 w-5 text-indigo-400" />
-                                Hizmetlerimizi İnceleyin
-                            </Link>
+                            <Briefcase className="mr-2 h-5 w-5 text-indigo-400" />
+                            Hizmetlerimizi İnceleyin
                         </Button>
                     </motion.div>
                 </motion.div>

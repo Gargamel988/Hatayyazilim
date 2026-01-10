@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     alternates: {
         canonical: '/kvkk',
     },
+    icons: {
+        icon: '/icon.png',
+        shortcut: '/favicon.ico',
+        apple: '/apple-touch-icon.png',
+    },
     robots: {
         index: true,
         follow: true,

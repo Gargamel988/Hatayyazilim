@@ -25,6 +25,11 @@ export const metadata: Metadata = {
     alternates: {
         canonical: '/services',
     },
+    icons: {
+        icon: '/icon.png',
+        shortcut: '/favicon.ico',
+        apple: '/apple-touch-icon.png',
+    },
     openGraph: {
         title: "Hizmetlerimiz | Hatay Yazılım",
         description: "İhtiyaçlarınıza özel web ve mobil çözümler. Dijital dünyada fark yaratın.",

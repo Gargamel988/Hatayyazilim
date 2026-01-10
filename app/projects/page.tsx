@@ -24,7 +24,11 @@ export const metadata: Metadata = {
     alternates: {
         canonical: '/projects',
     },
-
+    icons: {
+        icon: '/icon.png',
+        shortcut: '/favicon.ico',
+        apple: '/apple-touch-icon.png',
+    },
     openGraph: {
         title: "Projelerimiz | Hatay Yazılım",
         description: "Dijitalde fark yaratan projelerimiz. Web'den mobile, e-ticaretten özel otomasyonlara.",

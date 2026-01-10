@@ -19,7 +19,11 @@ export const metadata: Metadata = {
     alternates: {
         canonical: '/contact',
     },
-
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
     openGraph: {
         title: "Bize Ulaşın | Hatay Yazılım",
         description: "Projeniz için ücretsiz teklif alın. Dijital dönüşüm yolculuğunuzu birlikte başlatalım.",

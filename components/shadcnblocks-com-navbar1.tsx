@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import {
   Menu,
   Globe,
@@ -176,8 +176,9 @@ const Navbar1 = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center group-hover:scale-105 transition-transform">
-              <Rocket className="w-5 h-5 text-white" />
+            <div className="w-12 h-12 rounded-full overflow-hidden">
+
+              <Image src="/icon.png" alt="hatayyazilim logo" width={50} height={50} priority={true} className="object-cover" />
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-bold text-white leading-tight">

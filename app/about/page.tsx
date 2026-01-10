@@ -26,6 +26,11 @@ export const metadata: Metadata = {
     alternates: {
         canonical: '/about',
     },
+    icons: {
+        icon: '/icon.png',
+        shortcut: '/favicon.ico',
+        apple: '/apple-touch-icon.png',
+    },
     openGraph: {
         title: "Biz Kimiz? | Hatay Yazılım",
         description: "Tutkulu bir ekip, yenilikçi çözümler. Dijital dönüşüm yolculuğunuzda yanınızdayız.",

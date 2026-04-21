@@ -91,7 +91,7 @@ export default function RootLayout({
     "url": "https://hatayyazilim.com",
     "logo": "https://hatayyazilim.com/logo.png",
     "description": "Web ve mobil yazılım çözümleri sunan profesyonel yazılım şirketi",
-    "telephone": "+90-553-731-9288",
+    "telephone": "+90-551-514-2350",
     "email": "omeraydin1.web@gmail.com",
     "address": {
       "@type": "PostalAddress",
@@ -115,7 +115,7 @@ export default function RootLayout({
     ],
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+90-553-731-9288",
+      "telephone": "+90-551-514-2350",
       "contactType": "customer service",
       "email": "omeraydin1.web@gmail.com",
       "availableLanguage": ["Turkish", "English"]

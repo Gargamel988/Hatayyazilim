@@ -73,7 +73,7 @@ export default function ContactPage() {
             "url": "https://hatayyazilim.com",
             "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+90-553-731-9288",
+                "telephone": "+90-551-514-2350",
                 "contactType": "customer service",
                 "email": "omeraydin1.web@gmail.com",
                 "availableLanguage": ["Turkish", "English"],

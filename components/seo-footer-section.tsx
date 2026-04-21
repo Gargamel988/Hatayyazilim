@@ -107,10 +107,10 @@ export default function SeoFooterSection() {
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
                 <Link
-                  href="tel:+905537319288"
+                  href="tel:+905515142350"
                   className="text-white/60 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  +90 553 731 92 88
+                  +90 551 514 23 50
                 </Link>
               </li>
               <li className="flex items-start gap-3">

@@ -138,7 +138,7 @@ export default async function HizmetDetayPage({ params }: { params: Promise<{ sl
             "@type": "Organization",
             "name": "Hatay Yazılım",
             "url": "https://hatayyazilim.com",
-            "telephone": "+90-553-731-9288",
+            "telephone": "+90-551-514-2350",
             "email": "omeraydin1.web@gmail.com",
             "address": {
                 "@type": "PostalAddress",

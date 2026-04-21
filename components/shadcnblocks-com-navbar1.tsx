@@ -202,14 +202,14 @@ const Navbar1 = () => {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
-              href="https://wa.me/905537319288"
+              href="https://wa.me/905515142350"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
               aria-label="WhatsApp ile iletişime geçin"
             >
               <WhatsAppIcon size={20} />
-              <span className="hidden xl:inline">+90 553 731 92 88</span>
+              <span className="hidden xl:inline">+90 551 514 23 50</span>
             </Link>
             <Button
               asChild
@@ -271,14 +271,14 @@ const Navbar1 = () => {
                   {/* Mobile CTA */}
                   <div className="flex flex-col gap-3 pt-4">
                     <Link
-                      href="https://wa.me/905537319288"
+                      href="https://wa.me/905515142350"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 py-3 rounded-lg border border-white/10 text-white/70 hover:bg-white/5 transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
                       <WhatsAppIcon />
-                      <span>+90 553 731 92 88</span>
+                      <span>+90 551 514 23 50</span>
                     </Link>
                     <Button
                       asChild

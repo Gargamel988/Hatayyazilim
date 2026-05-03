@@ -12,7 +12,7 @@ export const metadata: Metadata = {
         "Kullanıcı Hakları"
     ],
     alternates: {
-        canonical: '/privacy-policy',
+        canonical: '/privacy',
     },
     icons: {
         icon: '/icon.png',
@@ -35,7 +35,7 @@ export default function PrivacyPage() {
         "@type": "WebPage",
         "name": "Gizlilik Politikası",
         "description": "Hatay Yazılım gizlilik politikası ve veri kullanım koşulları",
-        "url": "https://hatayyazilim.com/privacy-policy",
+        "url": "https://hatayyazilim.com/privacy",
         "inLanguage": "tr-TR",
         "isPartOf": {
             "@type": "WebSite",

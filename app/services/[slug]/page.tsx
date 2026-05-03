@@ -3,13 +3,13 @@ import Script from "next/script";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { SERVICES } from "@/lib/services-data";
+
 // Static params for build time generation
 export async function generateStaticParams() {
-    return [
-        { slug: "web-yazilim" },
-        { slug: "mobil-uygulama" },
-        { slug: "seo-danismanlik" },
-    ];
+    return SERVICES.map((service) => ({
+        slug: service.slug,
+    }));
 }
 
 // Hizmet verileri (merkezi data source)

@@ -3,16 +3,13 @@ import Script from "next/script";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { PROJECTS } from "@/lib/projects-data";
+
 // Static params for build time generation
 export async function generateStaticParams() {
-    return [
-        { slug: "chefoodai" },
-        { slug: "beatnova" },
-        { slug: "yapi-market" },
-        { slug: "guzellik-salonu" },
-        { slug: "finans-app" },
-        { slug: "lexicon" },
-    ];
+    return PROJECTS.map((project) => ({
+        slug: project.slug,
+    }));
 }
 
 // Proje verileri (merkezi data source)

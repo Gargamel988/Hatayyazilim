@@ -47,12 +47,12 @@ const projects = [
     },
     {
         id: 4,
-        slug: "hukuk-otomasyon",
-        title: "Hukuk Bürosu Otomasyonu",
-        description: "Dava, müvekkil ve evrak takibini dijitalleştiren özel CRM yazılımı.",
-        category: "corporate",
-        tags: ["Kurumsal", "CRM"],
-        client: "Demir Hukuk",
+        slug: "lexicon",
+        title: "LEXİCON",
+        description: "7 farklı oyun modu ve gerçek zamanlı çok oyunculu rekabet sunan modern kelime avı oyunu.",
+        category: "mobile",
+        tags: ["Mobil Oyun", "Multiplayer", "Skia"],
+        client: "Hatay Yazılım Studio",
         image: "from-indigo-500/20 to-purple-500/20",
     },
     {

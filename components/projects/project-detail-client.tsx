@@ -1,12 +1,42 @@
 "use client";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Check, Layers, Zap, TrendingUp } from "lucide-react";
+import { ArrowLeft, Check, Layers, Zap, TrendingUp, Globe, Download, Smartphone } from "lucide-react";
 import { notFound } from "next/navigation";
 import { ServicesCTASection } from "@/components/services";
+import { useState, useRef, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+
+interface Project {
+    title: string;
+    client: string;
+    category: string;
+    summary: string;
+    problem: {
+        title: string;
+        description: string;
+    };
+    solution: {
+        title: string;
+        description: string;
+        features: string[];
+    };
+    result: {
+        title: string;
+        metrics: { label: string; value: string }[];
+        description: string;
+    };
+    techStack: string[];
+    color: string;
+    links?: {
+        live?: string;
+        playStore?: string;
+        apk?: string;
+    };
+}
 
 // Proje Verileri
-const projectData = {
+const projectData: Record<string, Project> = {
     "chefoodai": {
         title: "ChefoodAI",
         client: "ChefoodAI",
@@ -37,6 +67,9 @@ const projectData = {
         },
         techStack: ["Next.js", "Vercel AI SDK", "TailwindCSS", "Supabase", "TypeScript"],
         color: "indigo",
+        links: {
+            live: "https://chefoodai.com",
+        }
     },
     "beatnova": {
         title: "BeatNova",
@@ -68,6 +101,10 @@ const projectData = {
         },
         techStack: ["React Native", "Node.js", "Vercel AI SDK", "Supabase"],
         color: "violet",
+        links: {
+            playStore: "https://play.google.com/store/apps/details?id=com.gargamel9288.beatnova",
+            apk: "https://github.com/Gargamel988/BeatNova/releases/download/v1.0.0/BeatNova.v1.0.0.apk"
+        }
     },
     "yapi-market": {
         title: "Yapı Market E-Ticaret",
@@ -99,37 +136,9 @@ const projectData = {
         },
         techStack: ["Next.js", "Elasticsearch", "Redis", ".NET Core"],
         color: "emerald", // Using custom color handling for this one
-    },
-    "hukuk-otomasyon": {
-        title: "Hukuk Bürosu Otomasyonu",
-        client: "Demir Hukuk",
-        category: "Kurumsal & CRM",
-        summary: "Dava, müvekkil ve evrak takibini dijitalleştiren, hukuki süreçleri hızlandıran özel CRM ve otomasyon yazılımı.",
-        problem: {
-            title: "Takibi Zor Dosya Yığınları",
-            description: "Binlerce fiziksel dosya arasında kaybolan evraklar, kaçırılan duruşma tarihleri ve müvekkil bilgilendirme eksikliği iş verimini düşürüyordu.",
-        },
-        solution: {
-            title: "Dijital Hukuk Asistanı",
-            description: "UYAP entegrasyonlu, duruşma hatırlatıcılı ve otomatik evrak şablonları sunan kapsamlı bir hukuk otomasyonu geliştirdik.",
-            features: [
-                "UYAP Entegrasyonu",
-                "Otomatik Duruşma Hatırlatma",
-                "Müvekkil Cari Takibi",
-                "Evrak Şablon Kütüphanesi",
-            ],
-        },
-        result: {
-            title: "Kağıtsız ve Hatasız Süreç",
-            metrics: [
-                { label: "Zaman Tasarrufu", value: "%70" },
-                { label: "Dosya Erişimi", value: "3 Saniye" },
-                { label: "Hata Oranı", value: "%0" },
-            ],
-            description: "Tüm dava dosyaları dijitalleşti. Avukatlar ofise gitmeden tüm süreçleri yönetebilir hale geldi.",
-        },
-        techStack: ["React", ".NET Core", "SQL Server", "Azure"],
-        color: "indigo",
+        links: {
+            live: "https://yapi-market-demo.hatayyazilim.com",
+        }
     },
     "guzellik-salonu": {
         title: "Salon Heaven",
@@ -160,6 +169,9 @@ const projectData = {
         },
         techStack: ["Next.js", "Prisma", "Supabase", "Shadcn/ui", "TailwindCSS", "TypeScript"],
         color: "violet",
+        links: {
+            live: "https://heavenkuafor.com",
+        }
     },
     "finans-app": {
         title: "MoneyMapAi",
@@ -191,6 +203,46 @@ const projectData = {
         },
         techStack: ["React Native", "Subabase", "Vercel Ai SDK", "Expo"],
         color: "emerald",
+        links: {
+            playStore: "https://play.google.com/store/apps/details?id=com.omeraydin.moneymapai",
+            apk: "https://github.com/Gargamel988/MoneyMapAi/releases/download/v1.0.0/MoneyMapAi.v1.0.0.apk"
+        }
+    },
+    "lexicon": {
+        title: "LEXİCON",
+        client: "Hatay Yazılım Studio",
+        category: "Mobil Oyun & Rekabet",
+        summary: "7 farklı oyun modu, gerçek zamanlı çok oyunculu rekabet ve dinamik kelime algoritmalarıyla kelime avı deneyimini yeniden tanımlayan premium mobil oyun.",
+        problem: {
+            title: "Tekdüze ve Statik Oyun Deneyimi",
+            description: "Pazardaki kelime oyunlarının çoğu sınırlı modlar ve statik kelime listeleri sunarak oyuncuları kısa sürede sıkıyordu. Ayrıca sosyal rekabet ve kişiselleştirme unsurları oldukça zayıftı.",
+        },
+        solution: {
+            title: "Hibrit Oyun Ekosistemi",
+            description: "Klasik, Hayatta Kalma, Tırmanış, Zamana Karşı ve Kör mod gibi 7 farklı oynanış tarzını tek bir çatıda topladık. Skia ve Reanimated kullanarak akıcı, hareketli ve modern bir UI/UX deneyimi sunduk.",
+            features: [
+                "7 Farklı Oyun Modu (Multiplayer Dahil)",
+                "Dinamik İpucu ve Yardım Sistemi",
+                "Kozmetik Mağazası & Envanter Yönetimi",
+                "Skia Destekli Hareketli İsim Etiketleri",
+                "Global & Mod Bazlı Liderlik Tabloları",
+                "Gelişmiş Başarım ve XP Sistemi",
+            ],
+        },
+        result: {
+            title: "Global Rekabet ve Başarı",
+            metrics: [
+                { label: "Oyun Modu", value: "7+" },
+                { label: "Etkileşim", value: "%65 Artış" },
+                { label: "Kullanıcı", value: "25K+" },
+            ],
+            description: "Dinamik modlar sayesinde kullanıcıların oyunda kalma süresi %65 arttı. Multiplayer moduyla birlikte binlerce oyuncu gerçek zamanlı rekabetin içine dahil oldu.",
+        },
+        techStack: ["React Native", "Expo", "Skia", "Reanimated", "Lottie", "Supabase", "SQLite"],
+        color: "indigo",
+        links: {
+            apk: "https://github.com/Gargamel988/LEXICON/releases/download/v1.0.0/Lexicon.v1.0.0.apk"
+        }
     }
 };
 
@@ -217,6 +269,19 @@ const colorMap = {
 
 export default function ProjectDetailClient({ slug }: { slug: string }) {
     const project = projectData[slug as keyof typeof projectData];
+    const [isDownloadOpen, setIsDownloadOpen] = useState(false);
+    const downloadRef = useRef<HTMLDivElement>(null);
+
+    // Close menu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (downloadRef.current && !downloadRef.current.contains(event.target as Node)) {
+                setIsDownloadOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     if (!project) {
         notFound();
@@ -288,10 +353,95 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                         <motion.p
                             custom={3}
                             variants={fadeUpVariants}
-                            className="text-xl text-white/50 leading-relaxed max-w-2xl"
+                            className="text-xl text-white/50 leading-relaxed max-w-2xl mb-10"
                         >
                             {project.summary}
                         </motion.p>
+
+                        {/* Project Links */}
+                        <motion.div
+                            custom={4}
+                            variants={fadeUpVariants}
+                            className="flex flex-wrap gap-4"
+                        >
+                            {project.links?.live && (
+                                <Link
+                                    href={project.links.live}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-all hover:scale-105 active:scale-95"
+                                >
+                                    <Globe className="w-4 h-4" />
+                                    <span>Web Sitesini Gör</span>
+                                </Link>
+                            )}
+
+                            {(project.links?.playStore || project.links?.apk) && (
+                                <div className="relative" ref={downloadRef}>
+                                    <button
+                                        onClick={() => {
+                                            if (project.links?.playStore && !project.links?.apk) {
+                                                window.open(project.links.playStore, "_blank");
+                                            } else if (!project.links?.playStore && project.links?.apk) {
+                                                window.open(project.links.apk, "_blank");
+                                            } else {
+                                                setIsDownloadOpen(!isDownloadOpen);
+                                            }
+                                        }}
+                                        className={`inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r ${colors.gradient} text-white font-semibold hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-${project.color}-500/25 cursor-pointer`}
+                                    >
+                                        <Download className="w-4 h-4" />
+                                        <span>Uygulamayı İndir</span>
+                                    </button>
+
+                                    {/* Selection Menu */}
+                                    <AnimatePresence>
+                                        {isDownloadOpen && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                                className="absolute left-0 bottom-full mb-3 w-64 p-2 rounded-2xl bg-[#121212] border border-white/10 shadow-2xl z-50 overflow-hidden"
+                                            >
+                                                {project.links?.playStore && (
+                                                    <a
+                                                        href={project.links.playStore}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/[0.05] transition-colors group"
+                                                    >
+                                                        <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all">
+                                                            <Smartphone className="w-5 h-5" />
+                                                        </div>
+                                                        <div>
+                                                            <div className="text-sm font-bold text-white">Google Play Store</div>
+                                                            <div className="text-[10px] text-white/40 uppercase tracking-wider">Tavsiye Edilen</div>
+                                                        </div>
+                                                    </a>
+                                                )}
+                                                {project.links?.apk && (
+                                                    <a
+                                                        href={project.links.apk}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        download
+                                                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/[0.05] transition-colors group mt-1"
+                                                    >
+                                                        <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                                                            <Download className="w-5 h-5" />
+                                                        </div>
+                                                        <div>
+                                                            <div className="text-sm font-bold text-white">Doğrudan İndir</div>
+                                                            <div className="text-[10px] text-white/40 uppercase tracking-wider">Alternatif </div>
+                                                        </div>
+                                                    </a>
+                                                )}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            )}
+                        </motion.div>
                     </motion.div>
                 </div>
             </section>

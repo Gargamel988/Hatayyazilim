@@ -9,9 +9,9 @@ export async function generateStaticParams() {
         { slug: "chefoodai" },
         { slug: "beatnova" },
         { slug: "yapi-market" },
-        { slug: "hukuk-otomasyon" },
         { slug: "guzellik-salonu" },
         { slug: "finans-app" },
+        { slug: "lexicon" },
     ];
 }
 
@@ -22,48 +22,59 @@ const projectData: Record<string, {
     category: string;
     tags: string[];
     year: string;
+    links?: {
+        live?: string;
+        playStore?: string;
+        apk?: string;
+    };
 }> = {
     "chefoodai": {
         title: "ChefoodAI | Akıllı Mutfak Asistanı",
         description: "Yapay zeka ile malzeme analizi ve tarif önerileri sunan web uygulaması. Dolabınızdaki malzemeleri fotoğrafla tanır ve kişiselleştirilmiş tarifler önerir.",
         category: "Web Uygulaması",
-        tags: ["AI", "Next.js", "React", "OpenAI"],
-        year: "2024"
+        tags: ["AI", "Next.js", "React"],
+        year: "2024",
+        links: { live: "https://chefoodai.com" }
     },
     "beatnova": {
         title: "BeatNova | AI Destekli Müzik Platformu",
         description: "Reklamsız ve AI destekli önerilerle yeni nesil müzik deneyimi. Kişiselleştirilmiş çalma listeleri ve akıllı müzik keşfi.",
         category: "Web & Mobil Uygulama",
-        tags: ["React Native", "AI", "Spotify API", "Music"],
-        year: "2024"
+        tags: ["React Native", "AI", "Music"],
+        year: "2024",
+        links: { playStore: "https://play.google.com/store/apps/details?id=com.beatnova", apk: "https://github.com/Gargamel988/BeatNova/releases/download/v1.0.0/BeatNova.v1.0.0.apk" }
     },
     "yapi-market": {
         title: "Yapı Market E-Ticaret Entegrasyonu",
         description: "50.000+ ürünlü e-ticaret platformu ve ERP entegrasyon projesi. Stok yönetimi, sipariş takibi ve B2B satış sistemi.",
         category: "E-Ticaret",
         tags: ["Next.js", "ERP", "E-Commerce", "Integration"],
-        year: "2023"
-    },
-    "hukuk-otomasyon": {
-        title: "Hukuk Bürosu Otomasyonu & CRM",
-        description: "Dava ve müvekkil takibini dijitalleştiren özel CRM yazılımı. Belge yönetimi, takvim entegrasyonu ve raporlama özellikleri.",
-        category: "Kurumsal Yazılım",
-        tags: ["CRM", "Legal Tech", "Document Management"],
-        year: "2023"
+        year: "2023",
+        links: { live: "https://yapi-market-demo.hatayyazilim.com" }
     },
     "guzellik-salonu": {
         title: "Salon Heaven | Dijital Randevu Sistemi",
         description: "Güzellik salonları için modern randevu ve yönetim platformu. Online rezervasyon, personel yönetimi ve müşteri takibi.",
         category: "SaaS",
         tags: ["Booking System", "Salon Management", "Mobile App"],
-        year: "2024"
+        year: "2024",
+        links: { live: "https://salonheaven.com" }
     },
     "finans-app": {
         title: "MoneyMapAi | Akıllı Finans Yönetimi",
         description: "Yapay zeka asistanlı kişisel gelir-gider takip uygulaması. Harcama analizi, bütçe planlama ve yatırım tavsiyeleri.",
         category: "Mobil Uygulama",
         tags: ["React Native", "AI", "Finance", "Personal Finance"],
-        year: "2024"
+        year: "2024",
+        links: { playStore: "https://play.google.com/store/apps/details?id=com.moneymapai", apk: "https://github.com/Gargamel988/MoneyMapAi/releases/download/v1.0.0/MoneyMapAi.v1.0.0.apk" }
+    },
+    "lexicon": {
+        title: "LEXİCON | 7 Farklı Oyun Modu",
+        description: "7 farklı oyun modu, çok oyunculu rekabet ve Skia tabanlı gelişmiş animasyonlara sahip yeni nesil dinamik kelime bulmaca oyunu.",
+        category: "Mobil Oyun",
+        tags: ["Game", "React Native", "Skia", "Multiplayer", "Competitive"],
+        year: "2024",
+        links: { apk: "https://github.com/Gargamel988/LEXICON/releases/download/v1.0.0/Lexicon.v1.0.0.apk" }
     },
 };
 
@@ -138,6 +149,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         "applicationCategory": project.category,
         "operatingSystem": "Web, iOS, Android",
         "url": `https://hatayyazilim.com/projects/${slug}`,
+        "downloadUrl": (project as any).links?.playStore || (project as any).links?.apk || undefined,
+        "installUrl": (project as any).links?.live || undefined,
         "datePublished": `${project.year}-01-01`,
         "author": {
             "@type": "Organization",

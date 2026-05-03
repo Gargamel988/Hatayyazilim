@@ -114,11 +114,11 @@ export default function ProjectsPage() {
             },
             {
                 "@type": "SoftwareApplication",
-                "name": "Hukuk Bürosu Otomasyonu",
-                "description": "Dava ve müvekkil takibi için özel CRM yazılımı.",
-                "url": "https://hatayyazilim.com/projects/hukuk-otomasyon",
-                "applicationCategory": "Business Application",
-                "operatingSystem": "Web"
+                "name": "LEXİCON",
+                "description": "7 farklı oyun modu ve çok oyunculu rekabet sunan dinamik kelime oyunu.",
+                "url": "https://hatayyazilim.com/projects/lexicon",
+                "applicationCategory": "Game Application",
+                "operatingSystem": "iOS, Android"
             },
             {
                 "@type": "SoftwareApplication",

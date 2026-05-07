@@ -3,44 +3,49 @@ import { BLOG_POSTS } from "@/lib/blog-data";
 import { PROJECTS } from "@/lib/projects-data";
 import { SERVICES } from "@/lib/services-data";
 
-export default function Sitemap(): MetadataRoute.Sitemap {
-  const Baseurl = "https://hatayyazilim.com";
+/**
+ * Antigravity SEO-First Sitemap Configuration
+ * Rule 3: Home priority 1, others 0.8
+ */
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://hatayyazilim.com";
 
   // Statik Sayfalar
   const staticPages = [
-    { url: `${Baseurl}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 1 },
-    { url: `${Baseurl}/about`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${Baseurl}/contact`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${Baseurl}/projects`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
-    { url: `${Baseurl}/services`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
-    { url: `${Baseurl}/blog`, lastModified: new Date(), changeFrequency: "daily" as const, priority: 0.8 },
-    { url: `${Baseurl}/kvkk`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.3 },
-    { url: `${Baseurl}/privacy`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.3 },
+    { url: `${baseUrl}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 1 },
+    { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${baseUrl}/projects`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: `${baseUrl}/services`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "daily" as const, priority: 0.8 },
+    { url: `${baseUrl}/kvkk`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
   ];
 
   // Blog Yazıları (Dinamik)
   const blogPages = BLOG_POSTS.map((post) => ({
-    url: `${Baseurl}/blog/${post.slug}`,
-    lastModified: new Date(),
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(), // İdeal olarak post.date parse edilmeli
     changeFrequency: "monthly" as const,
-    priority: 0.7,
+    priority: 0.8,
   }));
 
   // Proje Sayfaları (Dinamik)
   const projectPages = PROJECTS.map((project) => ({
-    url: `${Baseurl}/projects/${project.slug}`,
+    url: `${baseUrl}/projects/${project.slug}`,
     lastModified: new Date(),
-    changeFrequency: project.changeFrequency,
-    priority: project.priority,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
   }));
 
   // Hizmet Sayfaları (Dinamik)
   const servicePages = SERVICES.map((service) => ({
-    url: `${Baseurl}/services/${service.slug}`,
+    url: `${baseUrl}/services/${service.slug}`,
     lastModified: new Date(),
-    changeFrequency: service.changeFrequency,
-    priority: service.priority,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
   }));
 
   return [...staticPages, ...blogPages, ...projectPages, ...servicePages];
 }
+

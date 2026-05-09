@@ -170,7 +170,7 @@ const projectData: Record<string, Project> = {
         techStack: ["Next.js", "Prisma", "Supabase", "Shadcn/ui", "TailwindCSS", "TypeScript"],
         color: "violet",
         links: {
-            live: "https://heavenkuafor.com",
+            live: "https://salonheaven.com",
         }
     },
     "finans-app": {
@@ -204,8 +204,8 @@ const projectData: Record<string, Project> = {
         techStack: ["React Native", "Subabase", "Vercel Ai SDK", "Expo"],
         color: "emerald",
         links: {
-            playStore: "https://play.google.com/store/apps/details?id=com.omeraydin.moneymapai",
-            apk: "https://github.com/Gargamel988/MoneyMapAi/releases/download/v1.0.0/MoneyMapAi.v1.0.0.apk"
+            playStore: "https://play.google.com/store/apps/details?id=com.moneymapai",
+            apk: "https://github.com/Gargamel988/MoneyMapAi/releases/download/v1.0.11/MomeyMapAi.v1.0.11.apk"
         }
     },
     "lexicon": {
@@ -241,6 +241,7 @@ const projectData: Record<string, Project> = {
         techStack: ["React Native", "Expo", "Skia", "Reanimated", "Lottie", "Supabase", "SQLite"],
         color: "indigo",
         links: {
+            playStore: "https://play.google.com/store/apps/details?id=com.hatayyazilim.lexicon",
             apk: "https://github.com/Gargamel988/LEXICON/releases/download/v1.0.0/Lexicon.v1.0.0.apk"
         }
     }

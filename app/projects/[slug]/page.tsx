@@ -62,16 +62,16 @@ const projectData: Record<string, {
         description: "Yapay zeka asistanlı kişisel gelir-gider takip uygulaması. Harcama analizi, bütçe planlama ve yatırım tavsiyeleri.",
         category: "Mobil Uygulama",
         tags: ["React Native", "AI", "Finance", "Personal Finance"],
-        year: "2024",
-        links: { playStore: "https://play.google.com/store/apps/details?id=com.moneymapai", apk: "https://github.com/Gargamel988/MoneyMapAi/releases/download/v1.0.0/MoneyMapAi.v1.0.0.apk" }
+        year: "2025",
+        links: { playStore: "https://play.google.com/store/apps/details?id=com.moneymapai", apk: "https://github.com/Gargamel988/MoneyMapAi/releases/download/v1.0.11/MomeyMapAi.v1.0.11.apk" }
     },
     "lexicon": {
         title: "LEXİCON | 7 Farklı Oyun Modu",
         description: "7 farklı oyun modu, çok oyunculu rekabet ve Skia tabanlı gelişmiş animasyonlara sahip yeni nesil dinamik kelime bulmaca oyunu.",
         category: "Mobil Oyun",
         tags: ["Game", "React Native", "Skia", "Multiplayer", "Competitive"],
-        year: "2024",
-        links: { apk: "https://github.com/Gargamel988/LEXICON/releases/download/v1.0.0/Lexicon.v1.0.0.apk" }
+        year: "2026",
+        links: { playStore: "https://play.google.com/store/apps/details?id=com.hatayyazilim.lexicon", apk: "https://github.com/Gargamel988/LEXICON/releases/download/v1.0.0/Lexicon.v1.0.0.apk" }
     },
 };
 
